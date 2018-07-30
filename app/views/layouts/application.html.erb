@@ -11,38 +11,25 @@
     <title>Grayscale - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="/css/grayscale.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
-
-    <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-
-    <%= yield %>
-=======
   </head>
+
   <body>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start team_ishida</a>
+        <%= link_to "Start team_ishida", root_path, class: "navbar-brand js-scroll-trigger" %>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -58,29 +45,54 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#signup">YUU</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">NOGUCHI</a>
+            </li>
+            <li class="nav-item">
+              <% if logged_in? %>
+                <%= link_to "Profile", user_path(current_user.id), class: "nav-link js-scroll-trigger" %>
+              <% else %>
+                <%= link_to "Sign up", new_user_path, class: "nav-link js-scroll-trigger" %>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <% if logged_in? %>
+                <%= link_to "Logout", session_path(current_user.id), method: :delete, class: "nav-link js-scroll-trigger" %>
+              <% else %>
+                <%= link_to "Login", new_session_path, class: "nav-link js-scroll-trigger" %>
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
-   <%= yield %>
-   <!-- Footer -->
-   <footer class="bg-black small text-center text-white-50">
-     <div class="container">
-       Copyright &copy; Your Website 2018
-     </div>
-   </footer>
 
-   <!-- Bootstrap core JavaScript -->
-   <script src="vendor/jquery/jquery.min.js"></script>
-   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
 
-   <!-- Plugin JavaScript -->
-   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <% if logged_in? %>
+      <%= link_to "Profile", user_path(current_user.id) %>
+      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Login", new_session_path %>
+    <% end %>
 
-   <!-- Custom scripts for this template -->
-   <script src="js/grayscale.min.js"></script>
-
+    <div class="empty">
+    </div>
+    <%= yield %>
 
   </body>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="/js/grayscale.min.js"></script>
 
 </html>
